@@ -1,19 +1,25 @@
-'''If a customer purchases 0 books, he/she earns 0 points.
-If a customer purchases 1-2 books, he/she earns 3 points.
-If a customer purchases 3-4 books, he/she earns 12 points.
-If a customer purchases 5-6 books, he/she earns 20 points.
-If a customer purchases 7-9 books, he/she earns 30 points.
-If a customer purchases 10 or more books, he/she earns 50 points. '''
 
+# Program Name: Lab_2.py 
+# Course: IT1113/Section W04
+# Student Name: Jamaal Hinton
+# KSU Email Address: jhinton9@students.kennesaw.edu
+# Assignment Lab Number: 2
+# Due Date: 09/08/2024
+# Purpose: This program reads in the names and the number of books sold to customers for the month
+# and calculates the number of points the bookstore earned for it's sales. In the end, the program
+# prints the customer names and total points earned
+
+#Create variables for program
 item_list = []
 points_sum = 0
 points = 0
 
-for i in range(1):
+#Creating a loop to receive input for every customer
+for i in range(10):
     name = input("Please enter your name: ")
     num_of_books = int(input("Please enter the number of book purchased this month: "))
 
-    #if num_of_books in range(1,3):
+    #Logic for choosing how many points the store gets
     if num_of_books <= 0:
         points = 0
     elif 1 <= num_of_books <= 2:
@@ -24,11 +30,21 @@ for i in range(1):
         points = 20
     elif 7 <= num_of_books <= 9:
         points = 30
+    elif num_of_books >= 10:
+        points = 50
     
-
+    #Printing statement for individual customer
     points_sum = points_sum + points
-    item = "{name:15} {points}".format(name=name, points=points)
+    item = "Name: {name:15} Points earned: {points}".format(name=name, points=points)
+    #Appending customer and book points to the list
     item_list.append(item)
+    print(item)
 
-print(item_list)
-print(points_sum)
+    #Printing running total for the pionts earned
+    print("Total Points for Bookstore: " + str(points_sum))
+    print()
+
+#Printing the list of customers
+for i in item_list:
+    print(i)
+print("Total points this month for the Bookstore: " + str(points_sum))
